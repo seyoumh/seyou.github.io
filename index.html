@@ -67,17 +67,16 @@
         if (window.innerWidth > 1100) {
             iframe.style.width = '450px';
         }
-        iframe.src = 'https://seyoumh.com/index.html' + (location.search.includes('?') ? location.search + "&sourceSite=" + location.host : "?sourceSite=" + location.host) + location.hash;
+        iframe.src = 'https://seyoumh.com/test.html' + (location.search.includes('?') ? location.search + "&sourceSite=" + location.host : "?sourceSite=" + location.host) + location.hash;
         iframe.style.display = 'block';
-        // if (window.innerWidth < 1100) {
-        //     window.location.href = 'https://seyoumh.com/index.html' + (location.search.includes('?') ? location.search + "&sourceSite=" + location.host : "?sourceSite=" + location.host) + location.hash;
-        // } else {
-        //     window.location.href = 'https://seyoumh.com/pc_index.html' + (location.search.includes('?') ? location.search + "&sourceSite=" + location.host : "?sourceSite=" + location.host) + location.hash;
-        // }
     }
     document.body.addEventListener('touchmove', function(e) {
         e.preventDefault();
     }, {passive: false});
+    window.addEventListener('message', function (e) {
+        console.log(e)
+        history.replaceState({},0,location.origin+location.pathname+(location.search.includes('?')?location.search+'&webclip=1':'?webclip=1')+location.hash);
+    })
 </script>
 </body>
 </html>

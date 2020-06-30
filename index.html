@@ -67,15 +67,18 @@
         if (window.innerWidth > 1100) {
             iframe.style.width = '450px';
         }
-        iframe.src = 'https://seyoumh.com/test.html' + (location.search.includes('?') ? location.search + "&sourceSite=" + location.host : "?sourceSite=" + location.host) + location.hash;
+        iframe.src = 'https://seyoumh.com/index.html' + (location.search.includes('?') ? location.search + "&sourceSite=" + location.host : "?sourceSite=" + location.host) + location.hash;
         iframe.style.display = 'block';
     }
-    document.body.addEventListener('touchmove', function(e) {
-        e.preventDefault();
-    }, {passive: false});
+    //body禁止滚动
+    document.body.addEventListener('touchmove',e=> e.preventDefault(), {passive: false});
+
     window.addEventListener('message', function (e) {
-        console.log(e)
-        history.replaceState({},0,location.origin+location.pathname+(location.search.includes('?')?location.search+'&webclip=1':'?webclip=1')+location.hash);
+        if(e.data === 'addWebCliP'){
+            history.replaceState({},0,location.origin+location.pathname+(location.search.includes('?')?location.search+'&webclip=1':'?webclip=1')+location.hash);
+        }else if(e.data === 'rmWebCliP'){
+            history.replaceState({},0,location.href.replace('&webclip=1','').replace('?webclip=1',''));
+        }
     })
 </script>
 </body>

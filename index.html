@@ -1,33 +1,73 @@
-
-<!DOCTYPE html>
-<html lang=zh-CN>
+<!doctype html>
+<html lang="zh">
 <head>
-<meta charset=utf-8>
-<meta http-equiv=X-UA-Compatible content="IE=edge">
-<meta name=description content=好看,涩柚漫画,左左漫画,西米漫画,玩漫,顶通,海贼王,海贼王漫画,一人之下漫画,18禁,快看漫画,斗破苍穹,汗汗,羞羞漫画,邪恶漫画,歪歪漫画,日本漫画,韩国漫画,韩漫,日漫,二次元,成人,哔咔,抖手,哈哈,报告夫人,免费,动漫,腾讯动漫,腾讯漫画>
-<meta name=keywords content=好看,涩柚漫画,左左漫画,西米漫画,玩漫,顶通,海贼王,海贼王漫画,一人之下漫画,18禁,快看漫画,斗破苍穹,汗汗,羞羞漫画,邪恶漫画,歪歪漫画,日本漫画,韩国漫画,韩漫,日漫,二次元,成人,哔咔,抖手,哈哈,报告夫人,免费,动漫,腾讯动漫,腾讯漫画>
-<title>涩柚漫畫</title>
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-<script>
-        var coverSupport = 'CSS' in window && typeof CSS.supports === 'function' && (CSS.supports('top: env(a)') || CSS.supports('top: constant(a)'))
-        document.write('<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0' + (coverSupport ? ', viewport-fit=cover' : '') + '" />')
-</script>
-<style>
-  html,body,iframe{margin:0;height:100%;width:100%;border: none;overflow: hidden;}
-</style>
+    <meta charset="UTF-8">
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-touch-fullscreen" content="yes">
+    <link rel="apple-touch-icon" sizes="20x20" href="icon/20x20.png" />
+    <link rel="apple-touch-icon" sizes="29x29" href="icon/29x29.png" />
+    <link rel="apple-touch-icon" sizes="40x40" href="icon/40x40.png" />
+    <link rel="apple-touch-icon" sizes="58x58" href="icon/58x58.png" />
+    <link rel="apple-touch-icon" sizes="60x60" href="icon/60x60.png" />
+    <link rel="apple-touch-icon" sizes="80x80" href="icon/80x80.png" />
+    <link rel="apple-touch-icon" sizes="87x87" href="icon/87x87.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="icon/120x120.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="icon/152x152.png" />
+    <link rel="apple-touch-icon" sizes="167x167" href="icon/167x167.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="icon/180x180.png" />
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name=description
+          content=好看,涩柚漫画,左左漫画,西米漫画,玩漫,顶通,海贼王,海贼王漫画,一人之下漫画,18禁,快看漫画,斗破苍穹,汗汗,羞羞漫画,邪恶漫画,歪歪漫画,日本漫画,韩国漫画,韩漫,日漫,二次元,成人,哔咔,抖手,哈哈,报告夫人,免费,动漫,腾讯动漫,腾讯漫画>
+    <meta name=keywords
+          content=好看,涩柚漫画,左左漫画,西米漫画,玩漫,顶通,海贼王,海贼王漫画,一人之下漫画,18禁,快看漫画,斗破苍穹,汗汗,羞羞漫画,邪恶漫画,歪歪漫画,日本漫画,韩国漫画,韩漫,日漫,二次元,成人,哔咔,抖手,哈哈,报告夫人,免费,动漫,腾讯动漫,腾讯漫画>
+    <title>涩柚漫畫</title>
+    <style>
+        html, body {
+            height: 100%;
+            overflow: hidden;
+            margin: 0;
+            background-color:#777777;
+        }
+        #android,#ios{display: none;}
+        iframe{
+            display: none;
+            border: none;
+            height: 100%;
+            background-color: #fff;
+            max-width: 450px;
+        }
+    </style>
 </head>
 <body>
-<div style="
-    position: absolute;
-    height: 3000px;
-    top: 0;
-    width: 100%;
-"></div>
-<iframe src=""></iframe>
+<div style="display: flex;align-items:center;justify-content: center;height: 100%;flex-direction: column;">
+    <!--        <img src="img/1591585033912.jpg" width="100%"/>-->
+    <div id="android" style="background-color: rgba(0,0,0,0.5);position: fixed;top:0;height: 100%;width: 100%;">
+        <img src="android_browser_tips.png" width="100%"/>
+    </div>
+    <div id="ios" style="background-color: rgba(0,0,0,0.5);position: fixed;top:0;height: 100%;width: 100%;">
+        <img src="ios_browser_tips.png" width="100%"/>
+    </div>
+    <iframe ></iframe>
+</div>
 <script>
-document.querySelector('iframe').src = "https://seyoumh.com"+location.search+location.hash
+    if(navigator.userAgent.includes('MicroMessenger')){
+        if(navigator.userAgent.includes('Android')){
+            document.querySelector('#android').style.display = 'block';
+        }else if(navigator.userAgent.includes('iPhone')){
+            document.querySelector('#ios').style.display = 'block';
+        }
+    }else{
+        const iframe = document.querySelector('iframe');
+        iframe.src = 'https://seyoumh.com/index.html' + (location.search.includes('?') ? location.search + "&sourceSite=" + location.host : "?sourceSite=" + location.host) + location.hash;
+        iframe.style.display = 'block';
+        // if (window.innerWidth < 1100) {
+        //     window.location.href = 'https://seyoumh.com/index.html' + (location.search.includes('?') ? location.search + "&sourceSite=" + location.host : "?sourceSite=" + location.host) + location.hash;
+        // } else {
+        //     window.location.href = 'https://seyoumh.com/pc_index.html' + (location.search.includes('?') ? location.search + "&sourceSite=" + location.host : "?sourceSite=" + location.host) + location.hash;
+        // }
+    }
 </script>
-
 </body>
 </html>
-

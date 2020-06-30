@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="zh">
 <head>
@@ -15,8 +16,8 @@
     <link rel="apple-touch-icon" sizes="152x152" href="icon/152x152.png" />
     <link rel="apple-touch-icon" sizes="167x167" href="icon/167x167.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="icon/180x180.png" />
-<!--    <meta name="viewport"-->
-<!--          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">-->
+    <!--    <meta name="viewport"-->
+    <!--          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">-->
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name=description
           content=好看,涩柚漫画,左左漫画,西米漫画,玩漫,顶通,海贼王,海贼王漫画,一人之下漫画,18禁,快看漫画,斗破苍穹,汗汗,羞羞漫画,邪恶漫画,歪歪漫画,日本漫画,韩国漫画,韩漫,日漫,二次元,成人,哔咔,抖手,哈哈,报告夫人,免费,动漫,腾讯动漫,腾讯漫画>
@@ -34,7 +35,7 @@
             margin: 0;
             background-color:#777777;
         }
-        #android,#ios{display: none;}
+        #bgimg,#android,#ios{display: none;}
         iframe{
             display: none;
             border: none;
@@ -46,17 +47,18 @@
 </head>
 <body>
 <div style="display: flex;align-items:center;justify-content: center;height: 100%;flex-direction: column;">
-    <!--        <img src="img/1591585033912.jpg" width="100%"/>-->
-    <div id="android" style="background-color: rgba(0,0,0,0.5);position: fixed;top:0;height: 100%;width: 100%;">
+    <img src="bgimg.jpg" width="100%" id="bgimg"/>
+    <div id="android" style="background-color: rgba(0,0,0,0.2);position: fixed;top:0;height: 100%;width: 100%;">
         <img src="android_browser_tips.png" width="100%"/>
     </div>
-    <div id="ios" style="background-color: rgba(0,0,0,0.5);position: fixed;top:0;height: 100%;width: 100%;">
+    <div id="ios" style="background-color: rgba(0,0,0,0.2);position: fixed;top:0;height: 100%;width: 100%;">
         <img src="ios_browser_tips.png" width="100%"/>
     </div>
     <iframe ></iframe>
 </div>
 <script>
     if(navigator.userAgent.includes('MicroMessenger')){
+        document.querySelector('#bgimg').style.display = 'block';
         if(navigator.userAgent.includes('Android')){
             document.querySelector('#android').style.display = 'block';
         }else if(navigator.userAgent.includes('iPhone')){

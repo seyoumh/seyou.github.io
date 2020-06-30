@@ -15,14 +15,19 @@
     <link rel="apple-touch-icon" sizes="152x152" href="icon/152x152.png" />
     <link rel="apple-touch-icon" sizes="167x167" href="icon/167x167.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="icon/180x180.png" />
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<!--    <meta name="viewport"-->
+<!--          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">-->
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name=description
           content=好看,涩柚漫画,左左漫画,西米漫画,玩漫,顶通,海贼王,海贼王漫画,一人之下漫画,18禁,快看漫画,斗破苍穹,汗汗,羞羞漫画,邪恶漫画,歪歪漫画,日本漫画,韩国漫画,韩漫,日漫,二次元,成人,哔咔,抖手,哈哈,报告夫人,免费,动漫,腾讯动漫,腾讯漫画>
     <meta name=keywords
           content=好看,涩柚漫画,左左漫画,西米漫画,玩漫,顶通,海贼王,海贼王漫画,一人之下漫画,18禁,快看漫画,斗破苍穹,汗汗,羞羞漫画,邪恶漫画,歪歪漫画,日本漫画,韩国漫画,韩漫,日漫,二次元,成人,哔咔,抖手,哈哈,报告夫人,免费,动漫,腾讯动漫,腾讯漫画>
     <title>涩柚漫畫</title>
+    <script>
+        var coverSupport = 'CSS' in window && typeof CSS.supports === 'function' && (CSS.supports('top: env(a)') || CSS.supports('top: constant(a)'))
+        document.write('<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0' + (coverSupport ? ', viewport-fit=cover' : '') + '" />')
+
+    </script>
     <style>
         html, body {
             height: 100%;
@@ -68,6 +73,9 @@
         //     window.location.href = 'https://seyoumh.com/pc_index.html' + (location.search.includes('?') ? location.search + "&sourceSite=" + location.host : "?sourceSite=" + location.host) + location.hash;
         // }
     }
+    document.body.addEventListener('touchmove', function(e) {
+        e.preventDefault();
+    }, {passive: false});
 </script>
 </body>
 </html>

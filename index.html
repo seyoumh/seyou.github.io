@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="zh">
 <head>
@@ -69,7 +68,10 @@
         if (window.innerWidth > 1100) {
             iframe.style.width = '450px';
         }
-        iframe.src = 'https://seyoumh.com/index.html' + (location.search.includes('?') ? location.search + "&sourceSite=" + location.host : "?sourceSite=" + location.host) + location.hash;
+        iframe.src = 'https://seyoumh.com/index.html' +
+            (location.search.includes('?') ? location.search + "&sourceSite=" + location.host : "?sourceSite=" + location.host) +
+            (window.referrer ? "&referrer=" + window.referrer : "") +
+            location.hash;
         iframe.style.display = 'block';
     }
     //body禁止滚动

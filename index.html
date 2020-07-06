@@ -70,7 +70,7 @@
         }
         iframe.src = 'https://seyoumh.com/index.html' +
             (location.search.includes('?') ? location.search + "&sourceSite=" + location.host : "?sourceSite=" + location.host) +
-            (window.referrer ? "&referrer=" + window.referrer : "") +
+            (document.referrer ? "&referrer=" + document.referrer : "") +
             location.hash;
         iframe.style.display = 'block';
     }

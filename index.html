@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="zh">
 <head>
@@ -34,7 +35,7 @@
             margin: 0;
             background-color:#777777;
         }
-        #bgimg,#android,#ios{display: none;}
+        #bgimg,#android,#ios,#other{display: none;}
         iframe{
             display: none;
             border: none;
@@ -53,6 +54,9 @@
     <div id="ios" style="background-color: rgba(0,0,0,0.2);position: fixed;top:0;height: 100%;width: 100%;">
         <img src="ios_browser_tips.png" width="100%"/>
     </div>
+    <div id="other" style="background-color: rgba(0,0,0,0.2);position: fixed;top:0;height: 100%;width: 100%;">
+        <img src="ios_browser_tips.png" width="100%"/>
+    </div>
     <iframe ></iframe>
 </div>
 <script>
@@ -62,13 +66,15 @@
             document.querySelector('#android').style.display = 'block';
         }else if(navigator.userAgent.includes('iPhone')){
             document.querySelector('#ios').style.display = 'block';
+        }else{
+            document.querySelector('#other').style.display = 'block';
         }
     }else{
         const iframe = document.querySelector('iframe');
         if (window.innerWidth > 1100) {
             iframe.style.width = '450px';
         }
-        iframe.src = 'https://seyoumh.com/index.html' +
+        iframe.src = 'http://localhost:8080' +
             (location.search.includes('?') ? location.search + "&sourceSite=" + location.host : "?sourceSite=" + location.host) +
             (document.referrer ? "&referrer=" + escape(document.referrer) : "") +
             location.hash;
@@ -77,13 +83,33 @@
     //body禁止滚动
     document.body.addEventListener('touchmove',e=> e.preventDefault(), {passive: false});
 
-    window.addEventListener('message', function (e) {
-        if(e.data === 'addWebCliP'){
-            history.replaceState({},0,location.origin+location.pathname+(location.search.includes('?')?location.search+'&webclip=1':'?webclip=1')+location.hash);
-        }else if(e.data === 'rmWebCliP'){
-            history.replaceState({},0,location.href.replace('&webclip=1','').replace('?webclip=1',''));
+    // window.addEventListener('message', function (e) {
+    //     if(e.data === 'addWebCliP'){
+    //         history.replaceState({},0,location.origin+location.pathname+(location.search.includes('?')?location.search+'&webclip=1':'?webclip=1')+location.hash);
+    //     }else if(e.data === 'rmWebCliP'){
+    //         history.replaceState({},0,location.href.replace('&webclip=1','').replace('?webclip=1',''));
+    //     }
+    //
+    // });
+    window.addEventListener("message", ({data,origin,ports})=>{
+        console.log(data);
+        const opt = JSON.parse(data);
+        switch (opt.method) {
+            case 'getStorage':
+                ports[0].postMessage(window.localStorage[opt.argument]);
+                break;
+            case 'setStorage':
+                window.localStorage[opt.argument.key] = opt.argument.data;
+                break;
+            case 'addWebCliP':
+                history.replaceState({},0,location.origin+location.pathname+(location.search.includes('?')?location.search+'&webclip=1':'?webclip=1')+location.hash);
+                break;
+            case 'rmWebCliP':
+                history.replaceState({},0,location.href.replace('&webclip=1','').replace('?webclip=1',''));
+                break;
         }
-    })
+
+    });
 </script>
 </body>
 </html>

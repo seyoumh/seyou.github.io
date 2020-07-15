@@ -117,8 +117,7 @@
             location.hash;
         try{
             const browserVersion = getBrowser();
-            alert(browserVersion.browser+browserVersion.version);
-            if(browserVersion.browser === "Safari" && !versionCompare('1.0.0',browserVersion.version)){
+            if(browserVersion.browser === "Safari" && !versionCompare('11.0',browserVersion.version)){
                 open(src,'_self');
             }
         }catch (e) {

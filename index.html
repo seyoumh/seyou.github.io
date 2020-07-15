@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="zh">
 <head>
@@ -60,6 +59,48 @@
     <iframe ></iframe>
 </div>
 <script>
+    function getBrowser(){
+        var sys = {};
+        var ua = navigator.userAgent.toLowerCase();
+        var s;
+        (s = ua.match(/edge\/([\d.]+)/)) ? sys.edge = s[1] :
+            (s = ua.match(/rv:([\d.]+)\) like gecko/)) ? sys.ie = s[1] :
+                (s = ua.match(/msie ([\d.]+)/)) ? sys.ie = s[1] :
+                    (s = ua.match(/firefox\/([\d.]+)/)) ? sys.firefox = s[1] :
+                        (s = ua.match(/chrome\/([\d.]+)/)) ? sys.chrome = s[1] :
+                            (s = ua.match(/opera.([\d.]+)/)) ? sys.opera = s[1] :
+                                (s = ua.match(/version\/([\d.]+).*safari/)) ? sys.safari = s[1] : 0;
+
+        if (sys.edge) return { browser : "Edge", version : sys.edge };
+        if (sys.ie) return { browser : "IE", version : sys.ie };
+        if (sys.firefox) return { browser : "Firefox", version : sys.firefox };
+        if (sys.chrome) return { browser : "Chrome", version : sys.chrome };
+        if (sys.opera) return { browser : "Opera", version : sys.opera };
+        if (sys.safari) return { browser : "Safari", version : sys.safari };
+
+        return { browser : "", version : "0" };
+
+    }
+    // 比较版本号 curr < promote?
+    const versionCompare = function (curr, promote) {
+        let currVer = curr || '0.0.0';
+        let promoteVer = promote || '0.0.0';
+        if (currVer === promoteVer) return false;
+        let currVerArr = currVer.split('.');
+        let promoteVerArr = promoteVer.split('.');
+        let len = Math.max(currVerArr.length, promoteVerArr.length);
+        let proVal, curVal;
+        for (var i = 0; i < len; i++) {
+            proVal = ~~promoteVerArr[i];
+            curVal = ~~currVerArr[i];
+            if (proVal < curVal) {
+                return false;
+            } else if (proVal > curVal) {
+                return true;
+            }
+        }
+        return false;
+    };
     if(navigator.userAgent.includes('MicroMessenger')){
         document.querySelector('#bgimg').style.display = 'block';
         if(navigator.userAgent.includes('Android')){
@@ -70,14 +111,24 @@
             document.querySelector('#other').style.display = 'block';
         }
     }else{
+        const src = 'https://seyoumh.com/index.html' +
+            (location.search.includes('?') ? location.search + "&sourceSite=" + location.host : "?sourceSite=" + location.host) +
+            (document.referrer ? "&referrer=" + escape(document.referrer) : "") +
+            location.hash;
+        try{
+            const browserVersion = getBrowser();
+            alert(browserVersion.browser+browserVersion.version);
+            if(browserVersion.browser === "Safari" && !versionCompare('1.0.0',browserVersion.version)){
+                open(src,'_self');
+            }
+        }catch (e) {
+            console.log(e);
+        }
         const iframe = document.querySelector('iframe');
         if (window.innerWidth > 1100) {
             iframe.style.width = '450px';
         }
-        iframe.src = 'https://seyoumh.com/index.html' +
-            (location.search.includes('?') ? location.search + "&sourceSite=" + location.host : "?sourceSite=" + location.host) +
-            (document.referrer ? "&referrer=" + escape(document.referrer) : "") +
-            location.hash;
+        iframe.src = src;
         iframe.style.display = 'block';
     }
     //body禁止滚动
